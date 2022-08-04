@@ -19,8 +19,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    koinVersion = '3.2.0'
-    lifecycle_version = '2.4.1'
+    lifecycle_version = '2.5.1'
     moshi_version = '1.13.0'
     retrofit_version = '2.9.0'
     roomVersion = '2.4.3'

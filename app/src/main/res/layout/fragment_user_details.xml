@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="eu.adamgiergun.lsi.users.data.local.UserDB" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".users.userdetails.UserDetailsFragment">
+
+        <TextView
+            android:id="@+id/user_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}" />
+
+        <TextView
+            android:id="@+id/source_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.sourceApi}" />
+    </LinearLayout>
+</layout>

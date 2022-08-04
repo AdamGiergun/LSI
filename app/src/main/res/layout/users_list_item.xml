@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="eu.adamgiergun.lsi.users.data.local.UserDB" />
+
+        <variable
+            name="listener"
+            type="eu.adamgiergun.lsi.users.userslist.UserListItemListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".users.userslist.UsersListFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:onClick="@{() -> listener.onClick(user)}">
+
+            <TextView
+                android:id="@+id/user_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{user.name}" />
+
+            <TextView
+                android:id="@+id/source_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{user.sourceApi}" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
