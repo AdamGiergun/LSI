@@ -22,6 +22,10 @@ class UsersListViewModel(
         val usersRemoteRepository = UsersRemoteRepositoryImpl()
         viewModelScope.launch(Dispatchers.IO) {
             usersRemoteRepository.refresh()
+            dao.deleteAll()
+            usersRemoteRepository.users.value?.let {
+                dao.insert(it)
+            }
         }
     }
 
