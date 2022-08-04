@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private const val DAILYMOTION = "https://api.dailymotion.com/"
-private const val GITHUB = "https://api.github.com/users"
+private const val GITHUB = "https://api.github.com/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -33,4 +33,14 @@ interface DailymotionApiService{
 interface GithubApiService{
     @GET("users")
     suspend fun getUsers(): GithubUsersDTO
+}
+
+object UsersApis {
+    val retrofitDailymotionApiService: DailymotionApiService by lazy {
+        retrofitDailymotion.create(DailymotionApiService::class.java)
+    }
+
+    val retrofitGithubApiService: GithubApiService by lazy {
+        retrofitGithub.create(GithubApiService::class.java)
+    }
 }
