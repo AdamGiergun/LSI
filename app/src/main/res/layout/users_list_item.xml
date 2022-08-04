@@ -18,7 +18,7 @@
         style="@style/Theme.LSI.CardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/card_background_color"
+        app:cardBackgroundColor="@color/background_color"
         tools:context=".users.userslist.UsersListFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,14 +28,14 @@
             android:onClick="@{() -> listener.onClick(user)}">
 
             <ImageView
-                android:padding="8dp"
                 android:id="@+id/avatar_view"
                 android:layout_width="@dimen/list_avatar_size"
                 android:layout_height="@dimen/list_avatar_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/user_avatar"
+                android:padding="8dp"
                 app:avatar_url="@{user.avatarUrl}"
-                android:contentDescription="@string/user_avatar" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/user_view"
@@ -46,7 +46,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/source_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/avatar_view"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/source_view"

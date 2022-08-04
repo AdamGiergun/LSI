@@ -20,5 +20,4 @@ class UserDetailsFragment : Fragment() {
             return root
         }
     }
-
 }

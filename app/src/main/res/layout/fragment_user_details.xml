@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,19 +13,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/background_color"
         android:orientation="vertical"
         tools:context=".users.userdetails.UserDetailsFragment">
+
+        <ImageView
+            android:id="@+id/avatar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/user_avatar"
+            android:padding="12dp"
+            app:avatar_url="@{user.avatarUrl}" />
 
         <TextView
             android:id="@+id/user_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_details"
+            android:layout_marginTop="@dimen/text_margin_details"
             android:text="@{user.name}" />
 
         <TextView
             android:id="@+id/source_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_details"
+            android:layout_marginTop="@dimen/text_margin_details"
             android:text="@{user.sourceApi}" />
     </LinearLayout>
 </layout>

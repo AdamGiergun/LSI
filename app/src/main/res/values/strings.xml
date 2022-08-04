@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">LSI</string>
     <string name="error_connecting_data_source_on_internet">Error connecting data source on internet</string>
+    <string name="user_avatar">User avatar</string>
 </resources>
