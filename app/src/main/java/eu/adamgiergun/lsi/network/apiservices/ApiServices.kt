@@ -3,7 +3,7 @@ package eu.adamgiergun.lsi.network.apiservices
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import eu.adamgiergun.lsi.network.dto.DailyMotionUsersPagesDTO
-import eu.adamgiergun.lsi.network.dto.GithubUsersDTO
+import eu.adamgiergun.lsi.network.dto.GithubUserDTO
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
@@ -32,7 +32,7 @@ interface DailymotionApiService{
 
 interface GithubApiService{
     @GET("users")
-    suspend fun getUsers(): GithubUsersDTO
+    suspend fun getUsers(): List<GithubUserDTO>
 }
 
 object UsersApis {

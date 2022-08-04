@@ -32,7 +32,9 @@ class UsersRemoteRepositoryImpl: UsersRemoteRepository {
         _errorText.postValue(null)
 
         try {
-            val usersDB = UsersApis.retrofitGithubApiService.getUsers().asDbModel()
+            val usersDB: MutableList<UserDB> = UsersApis.retrofitGithubApiService.getUsers().map {
+                it.asDbModel()
+            }.toMutableList()
             usersDB += UsersApis.retrofitDailymotionApiService.getUsers().asDbModel()
             _users.postValue(usersDB)
         } catch (e: Exception) {
