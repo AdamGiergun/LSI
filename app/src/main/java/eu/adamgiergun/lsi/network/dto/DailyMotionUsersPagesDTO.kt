@@ -1,4 +1,4 @@
-package eu.adamgiergun.lsi.dto
+package eu.adamgiergun.lsi.network.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
