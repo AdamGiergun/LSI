@@ -1,6 +1,7 @@
 package eu.adamgiergun.lsi.users.userslist
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class UsersListFragment : Fragment() {
         FragmentUsersListBinding.inflate(inflater).run {
             lifecycleOwner = viewLifecycleOwner
             viewModel = usersListViewModel
+            textView.movementMethod = ScrollingMovementMethod()
             return root
         }
     }

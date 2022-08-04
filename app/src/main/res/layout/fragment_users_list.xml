@@ -15,8 +15,10 @@
         tools:context=".users.userslist.UsersListFragment">
 
         <TextView
+            android:id="@+id/text_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scrollbars="vertical"
             android:text="@{viewModel.usersList.toString()}" />
 
     </FrameLayout>
