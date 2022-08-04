@@ -78,4 +78,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$roomVersion"
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     kapt "androidx.room:room-compiler:$roomVersion"
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 }
