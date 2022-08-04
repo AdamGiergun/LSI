@@ -17,6 +17,7 @@ class UsersListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         FragmentUsersListBinding.inflate(inflater).run {
+            lifecycleOwner = viewLifecycleOwner
             viewModel = usersListViewModel
             return root
         }
