@@ -34,7 +34,9 @@ class UsersListFragment : Fragment() {
                                         )
                                     )
                                 }
-                            )
+                            ).apply {
+                                submitList(usersList)
+                            }
                         }
                     } else {
                         usersAdapter?.submitList(usersList)

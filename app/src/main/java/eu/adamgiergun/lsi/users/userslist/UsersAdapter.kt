@@ -42,8 +42,7 @@ class UsersAdapter(
         ViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val user = dataSet[position]
-        //TODO: why getItem(position) crashes app
+        val user = getItem(position)
         holder.bind(user, userListItemListener)
     }
 
