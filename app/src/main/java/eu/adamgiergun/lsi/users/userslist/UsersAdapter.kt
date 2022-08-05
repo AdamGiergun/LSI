@@ -9,7 +9,6 @@ import eu.adamgiergun.lsi.databinding.UsersListItemBinding
 import eu.adamgiergun.lsi.users.data.local.UserDB
 
 class UsersAdapter(
-    private val dataSet: List<UserDB>,
     private val userListItemListener: UserListItemListener
 ) : ListAdapter<UserDB, UsersAdapter.ViewHolder>(DiffCallback) {
 
@@ -45,8 +44,6 @@ class UsersAdapter(
         val user = getItem(position)
         holder.bind(user, userListItemListener)
     }
-
-    override fun getItemCount() = dataSet.size
 
     object DiffCallback : DiffUtil.ItemCallback<UserDB>() {
 

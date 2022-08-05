@@ -26,7 +26,6 @@ class UsersListFragment : Fragment() {
                     if (usersAdapter == null) {
                         if (usersList.isNotEmpty()) {
                             usersRecycler.adapter = UsersAdapter(
-                                usersList,
                                 UserListItemListener { user ->
                                     findNavController().navigate(
                                         UsersListFragmentDirections.actionUsersListFragmentToUserDetailsFragment(
