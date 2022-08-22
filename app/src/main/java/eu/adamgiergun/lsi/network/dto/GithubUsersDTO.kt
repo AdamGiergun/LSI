@@ -11,11 +11,9 @@ data class GithubUserDTO(
     @Json(name = "avatar_url") val avatarUrl: String
 )
 
-fun GithubUserDTO.asDbModel(): UserDB {
-    return UserDB(
-        id.toString(),
-        userName,
-        avatarUrl,
-        "GitHub"
-    )
-}
+fun GithubUserDTO.asDbModel() = UserDB(
+    id.toString(),
+    userName,
+    avatarUrl,
+    "GitHub"
+)
