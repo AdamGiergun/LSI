@@ -1,4 +1,4 @@
-package eu.adamgiergun.lsi.users.data.local
+package eu.adamgiergun.lsi.users.data.local.db
 
 import android.content.Context
 import androidx.room.Database

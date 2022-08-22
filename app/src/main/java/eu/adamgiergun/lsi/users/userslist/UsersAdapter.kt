@@ -6,21 +6,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import eu.adamgiergun.lsi.databinding.UsersListItemBinding
-import eu.adamgiergun.lsi.users.data.local.UserDB
+import eu.adamgiergun.lsi.users.data.local.User
 
 class UsersAdapter(
     private val userListItemListener: UserListItemListener
-) : ListAdapter<UserDB, UsersAdapter.ViewHolder>(DiffCallback) {
+) : ListAdapter<User, UsersAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(private val binding: UsersListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            userDB: UserDB,
+            user: User,
             userListItemListener: UserListItemListener
         ) {
             binding.apply {
-                user = userDB
+                this.user = user
                 listener = userListItemListener
                 executePendingBindings()
             }
@@ -46,13 +46,13 @@ class UsersAdapter(
     }
 }
 
-object DiffCallback : DiffUtil.ItemCallback<UserDB>() {
+object DiffCallback : DiffUtil.ItemCallback<User>() {
 
-    override fun areItemsTheSame(oldItem: UserDB, newItem: UserDB): Boolean {
+    override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem === newItem
     }
 
-    override fun areContentsTheSame(oldItem: UserDB, newItem: UserDB): Boolean {
+    override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem.id == newItem.id
     }
 }

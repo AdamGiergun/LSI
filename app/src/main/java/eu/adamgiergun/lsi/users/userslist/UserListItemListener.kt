@@ -1,7 +1,7 @@
 package eu.adamgiergun.lsi.users.userslist
 
-import eu.adamgiergun.lsi.users.data.local.UserDB
+import eu.adamgiergun.lsi.users.data.local.User
 
-class UserListItemListener (val clickListener: (userDB: UserDB) -> Unit) {
-    fun onClick(userDB: UserDB) = clickListener(userDB)
+class UserListItemListener (val clickListener: (user: User) -> Unit) {
+    fun onClick(user: User) = clickListener(user)
 }

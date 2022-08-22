@@ -2,7 +2,7 @@ package eu.adamgiergun.lsi.network.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import eu.adamgiergun.lsi.users.data.local.UserDB
+import eu.adamgiergun.lsi.users.data.local.db.UserDB
 
 @JsonClass(generateAdapter = true)
 data class GithubUserDTO(

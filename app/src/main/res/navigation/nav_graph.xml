@@ -22,7 +22,7 @@
         android:label="UserDetailsFragment">
         <argument
             android:name="user"
-            app:argType="eu.adamgiergun.lsi.users.data.local.UserDB"
+            app:argType="eu.adamgiergun.lsi.users.data.local.User"
             app:nullable="false" />
     </fragment>
 </navigation>

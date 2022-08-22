@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import eu.adamgiergun.lsi.R
 import eu.adamgiergun.lsi.network.apiservices.UsersApis
 import eu.adamgiergun.lsi.network.dto.asDbModel
-import eu.adamgiergun.lsi.users.data.local.UserDB
+import eu.adamgiergun.lsi.users.data.local.db.UserDB
 
 class UsersRemoteRepositoryImpl: UsersRemoteRepository {
 

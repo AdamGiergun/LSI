@@ -7,7 +7,7 @@
 
         <variable
             name="user"
-            type="eu.adamgiergun.lsi.users.data.local.UserDB" />
+            type="eu.adamgiergun.lsi.users.data.local.User" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
