@@ -18,14 +18,14 @@
         style="@style/Theme.LSI.CardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> listener.onClick(user)}"
         app:cardBackgroundColor="@color/background_color"
         tools:context=".users.userslist.UsersListFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> listener.onClick(user)}">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/avatar_view"

@@ -44,15 +44,15 @@ class UsersAdapter(
         val user = getItem(position)
         holder.bind(user, userListItemListener)
     }
+}
 
-    object DiffCallback : DiffUtil.ItemCallback<UserDB>() {
+object DiffCallback : DiffUtil.ItemCallback<UserDB>() {
 
-        override fun areItemsTheSame(oldItem: UserDB, newItem: UserDB): Boolean {
-            return oldItem === newItem
-        }
+    override fun areItemsTheSame(oldItem: UserDB, newItem: UserDB): Boolean {
+        return oldItem === newItem
+    }
 
-        override fun areContentsTheSame(oldItem: UserDB, newItem: UserDB): Boolean {
-            return oldItem.id == newItem.id
-        }
+    override fun areContentsTheSame(oldItem: UserDB, newItem: UserDB): Boolean {
+        return oldItem.id == newItem.id
     }
 }
