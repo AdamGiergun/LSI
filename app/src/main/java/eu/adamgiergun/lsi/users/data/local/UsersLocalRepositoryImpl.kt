@@ -2,8 +2,11 @@ package eu.adamgiergun.lsi.users.data.local
 
 import androidx.lifecycle.Transformations
 import eu.adamgiergun.lsi.users.data.local.db.UsersDao
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class UsersLocalRepositoryImpl(
+@Singleton
+class UsersLocalRepositoryImpl @Inject constructor(
     private val usersDao: UsersDao,
 ) : UsersLocalRepository {
 

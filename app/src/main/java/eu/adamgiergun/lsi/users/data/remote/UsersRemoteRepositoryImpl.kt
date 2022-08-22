@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import eu.adamgiergun.lsi.R
 import eu.adamgiergun.lsi.network.apiservices.UsersApis
 import eu.adamgiergun.lsi.network.dto.asDbModel
-import eu.adamgiergun.lsi.users.data.local.db.UserDB
+import eu.adamgiergun.lsi.users.data.local.db.UsersDao
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class UsersRemoteRepositoryImpl: UsersRemoteRepository {
-
-    private var _users = emptyList<UserDB>()
-    override val users: List<UserDB>
-        get() = _users
+@Singleton
+class UsersRemoteRepositoryImpl
+@Inject constructor(private var dao: UsersDao) :
+    UsersRemoteRepository {
 
     private val _error = MutableLiveData<Boolean?>()
     override val error: LiveData<Boolean?>
@@ -26,22 +27,28 @@ class UsersRemoteRepositoryImpl: UsersRemoteRepository {
         get() = _errorText
 
     override suspend fun refresh() {
-        _users = emptyList()
         _error.postValue(null)
         _errorInfoId.postValue(null)
         _errorText.postValue(null)
 
         try {
-            val usersDB: MutableList<UserDB> = UsersApis.retrofitGithubApiService.getUsers().map {
+            dao.deleteAll()
+            UsersApis.retrofitGithubApiService.getUsers().map {
                 it.asDbModel()
-            }.toMutableList()
-            usersDB += UsersApis.retrofitDailymotionApiService.getUsers().asDbModel()
-            _users = usersDB
+            }.let {
+                dao.insert(it)
+            }
+            UsersApis.retrofitDailymotionApiService
+                .getUsers()
+                .asDbModel()
+                .let {
+                    dao.insert(it)
+                }
+
         } catch (e: Exception) {
             _errorInfoId.postValue(R.string.error_connecting_data_source_on_internet)
             _errorText.postValue(e.localizedMessage ?: "")
             _error.postValue(true)
-            _users = emptyList()
         }
     }
 }

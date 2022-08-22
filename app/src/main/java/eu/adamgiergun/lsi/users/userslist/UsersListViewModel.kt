@@ -1,31 +1,23 @@
 package eu.adamgiergun.lsi.users.userslist
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.adamgiergun.lsi.users.data.local.UsersLocalRepository
-import eu.adamgiergun.lsi.users.data.local.UsersLocalRepositoryImpl
-import eu.adamgiergun.lsi.users.data.local.db.LocalDB
-import eu.adamgiergun.lsi.users.data.remote.UsersRemoteRepositoryImpl
+import eu.adamgiergun.lsi.users.data.remote.UsersRemoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UsersListViewModel(
-    app: Application,
-) : AndroidViewModel(app) {
-
-    private val usersLocalRepository: UsersLocalRepository
+@HiltViewModel
+class UsersListViewModel @Inject constructor(
+    usersRemoteRepository: UsersRemoteRepository,
+    usersLocalRepository: UsersLocalRepository
+) : ViewModel() {
 
     init {
-        val dao = LocalDB.getDatabase(app.applicationContext).usersDao()
-        usersLocalRepository = UsersLocalRepositoryImpl(dao)
         viewModelScope.launch(Dispatchers.IO) {
-            val usersRemoteRepository = UsersRemoteRepositoryImpl()
             usersRemoteRepository.refresh()
-            dao.apply {
-                deleteAll()
-                insert(usersRemoteRepository.users)
-            }
         }
     }
 
