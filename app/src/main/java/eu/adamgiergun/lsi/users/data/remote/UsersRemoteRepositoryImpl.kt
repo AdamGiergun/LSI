@@ -9,8 +9,8 @@ import eu.adamgiergun.lsi.users.data.local.db.UserDB
 
 class UsersRemoteRepositoryImpl: UsersRemoteRepository {
 
-    private val _users = MutableLiveData<List<UserDB>?>()
-    override val users: LiveData<List<UserDB>?>
+    private var _users = emptyList<UserDB>()
+    override val users: List<UserDB>
         get() = _users
 
     private val _error = MutableLiveData<Boolean?>()
@@ -26,7 +26,7 @@ class UsersRemoteRepositoryImpl: UsersRemoteRepository {
         get() = _errorText
 
     override suspend fun refresh() {
-        _users.postValue(null)
+        _users = emptyList()
         _error.postValue(null)
         _errorInfoId.postValue(null)
         _errorText.postValue(null)
@@ -36,12 +36,12 @@ class UsersRemoteRepositoryImpl: UsersRemoteRepository {
                 it.asDbModel()
             }.toMutableList()
             usersDB += UsersApis.retrofitDailymotionApiService.getUsers().asDbModel()
-            _users.postValue(usersDB)
+            _users = usersDB
         } catch (e: Exception) {
             _errorInfoId.postValue(R.string.error_connecting_data_source_on_internet)
             _errorText.postValue(e.localizedMessage ?: "")
             _error.postValue(true)
-            _users.postValue(null)
+            _users = emptyList()
         }
     }
 }
