@@ -15,17 +15,12 @@ data class DailyMotionUsersPagesDTO(
     )
 }
 
-fun DailyMotionUsersPagesDTO.asDbModel(): MutableList<UserDB> {
-    val users = mutableListOf<UserDB>()
-    list.forEach { userDTO ->
-        users.add(
-            UserDB(
-                userDTO.id,
-                userDTO.screenName,
-                "",
-                "Dailymotion"
-            )
+fun DailyMotionUsersPagesDTO.asDbModel() =
+    list.map { userDTO ->
+        UserDB(
+            userDTO.id,
+            userDTO.screenName,
+            "",
+            "Dailymotion"
         )
     }
-    return users
-}
