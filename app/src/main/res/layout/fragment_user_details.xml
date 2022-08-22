@@ -20,11 +20,12 @@
         <ImageView
             android:id="@+id/avatar_view"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/user_avatar"
             android:padding="12dp"
+            android:scaleType="fitCenter"
             app:avatar_url="@{user.avatarUrl}"
-            app:layout_constraintBottom_toTopOf="@id/user_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,9 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@{user.name}"
-            app:layout_constraintBottom_toTopOf="@id/source_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatar_view" />
 
         <TextView
             android:id="@+id/source_view"
@@ -45,8 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@{user.sourceApi}"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
