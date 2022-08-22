@@ -10,6 +10,7 @@ import eu.adamgiergun.lsi.R
 @BindingAdapter("avatar_url")
 fun ImageView.bindAvatar(avatarUrl: String?) {
     if (avatarUrl.isNullOrBlank()) {
+        Glide.with(context).clear(this)
         setImageResource(R.drawable.ic_broken_image)
     } else {
         val avatarUri = avatarUrl.toUri().buildUpon().scheme("https").build()
