@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import eu.adamgiergun.lsi.databinding.UsersListItemBinding
 import eu.adamgiergun.lsi.users.data.local.User
+import eu.adamgiergun.lsi.util.ClickListener
 
 class UsersAdapter(
-    private val userListItemListener: UserListItemListener
+    private val clickListener: ClickListener<User>
 ) : ListAdapter<User, UsersAdapter.ViewHolder>(DiffCallback) {
 
     class ViewHolder(private val binding: UsersListItemBinding) :
@@ -17,11 +18,11 @@ class UsersAdapter(
 
         fun bind(
             user: User,
-            userListItemListener: UserListItemListener
+            clickListener: ClickListener<User>
         ) {
             binding.apply {
                 this.user = user
-                listener = userListItemListener
+                listener = clickListener
                 executePendingBindings()
             }
         }
@@ -42,7 +43,7 @@ class UsersAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = getItem(position)
-        holder.bind(user, userListItemListener)
+        holder.bind(user, clickListener)
     }
 }
 

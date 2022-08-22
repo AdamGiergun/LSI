@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="eu.adamgiergun.lsi.users.userslist.UserListItemListener" />
+            type="eu.adamgiergun.lsi.util.ClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView

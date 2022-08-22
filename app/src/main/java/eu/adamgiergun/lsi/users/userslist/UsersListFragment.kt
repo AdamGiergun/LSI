@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import eu.adamgiergun.lsi.databinding.FragmentUsersListBinding
+import eu.adamgiergun.lsi.util.ClickListener
 
 class UsersListFragment : Fragment() {
 
@@ -18,7 +19,7 @@ class UsersListFragment : Fragment() {
         savedInstanceState: Bundle?
     ) = FragmentUsersListBinding.inflate(inflater).let { binding ->
         val usersAdapter = UsersAdapter(
-            UserListItemListener { user ->
+            ClickListener { user ->
                 findNavController().navigate(
                     UsersListFragmentDirections
                         .actionUsersListFragmentToUserDetailsFragment(user)
