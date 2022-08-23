@@ -14,13 +14,3 @@ data class DailyMotionUsersPagesDTO(
         @Json(name = "screenname") val screenName: String
     )
 }
-
-fun DailyMotionUsersPagesDTO.asDbModel() =
-    list.map { userDTO ->
-        UserDB(
-            userDTO.id,
-            userDTO.screenName,
-            "",
-            "Dailymotion"
-        )
-    }

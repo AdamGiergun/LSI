@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import eu.adamgiergun.lsi.R
 import eu.adamgiergun.lsi.network.apiservices.DailymotionApiService
 import eu.adamgiergun.lsi.network.apiservices.GithubApiService
-import eu.adamgiergun.lsi.network.dto.asDbModel
+import eu.adamgiergun.lsi.network.dto.DailyMotionUsersPagesDTO
+import eu.adamgiergun.lsi.network.dto.GithubUserDTO
+import eu.adamgiergun.lsi.users.data.local.db.UserDB
 import eu.adamgiergun.lsi.users.data.local.db.UsersDao
 import javax.inject.Inject
 
@@ -59,3 +61,21 @@ class UsersRemoteRepositoryImpl
         }
     }
 }
+
+private fun DailyMotionUsersPagesDTO.asDbModel() =
+    list.map { userDTO ->
+        UserDB(
+            userDTO.id,
+            userDTO.screenName,
+            "",
+            "Dailymotion"
+        )
+    }
+
+private fun GithubUserDTO.asDbModel() =
+    UserDB(
+        id.toString(),
+        userName,
+        avatarUrl,
+        "GitHub"
+    )
