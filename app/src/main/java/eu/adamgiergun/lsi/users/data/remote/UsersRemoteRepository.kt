@@ -1,9 +1,7 @@
 package eu.adamgiergun.lsi.users.data.remote
 
 import androidx.lifecycle.LiveData
-import javax.inject.Singleton
 
-@Singleton
 interface UsersRemoteRepository {
 
     val error: LiveData<Boolean?>

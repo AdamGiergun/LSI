@@ -7,9 +7,7 @@ import eu.adamgiergun.lsi.network.apiservices.UsersApis
 import eu.adamgiergun.lsi.network.dto.asDbModel
 import eu.adamgiergun.lsi.users.data.local.db.UsersDao
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class UsersRemoteRepositoryImpl
 @Inject constructor(private var dao: UsersDao) :
     UsersRemoteRepository {
