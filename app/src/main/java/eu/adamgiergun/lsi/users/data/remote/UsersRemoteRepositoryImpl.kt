@@ -3,7 +3,8 @@ package eu.adamgiergun.lsi.users.data.remote
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import eu.adamgiergun.lsi.R
-import eu.adamgiergun.lsi.network.apiservices.UsersApis
+import eu.adamgiergun.lsi.network.apiservices.DailymotionApiService
+import eu.adamgiergun.lsi.network.apiservices.GithubApiService
 import eu.adamgiergun.lsi.network.dto.asDbModel
 import eu.adamgiergun.lsi.users.data.local.db.UsersDao
 import javax.inject.Inject
@@ -11,6 +12,12 @@ import javax.inject.Inject
 class UsersRemoteRepositoryImpl
 @Inject constructor(private var dao: UsersDao) :
     UsersRemoteRepository {
+
+    @Inject
+    lateinit var dailymotionApiService: DailymotionApiService
+
+    @Inject
+    lateinit var githubApiService: GithubApiService
 
     private val _error = MutableLiveData<Boolean?>()
     override val error: LiveData<Boolean?>
@@ -31,13 +38,15 @@ class UsersRemoteRepositoryImpl
 
         try {
             dao.deleteAll()
-            UsersApis.retrofitGithubApiService.getUsers().map {
-                it.asDbModel()
-            }.let {
-                dao.insert(it)
-            }
-            UsersApis.retrofitDailymotionApiService
-                .getUsers()
+
+            githubApiService.getUsers()
+                .map {
+                    it.asDbModel()
+                }.let {
+                    dao.insert(it)
+                }
+
+            dailymotionApiService.getUsers()
                 .asDbModel()
                 .let {
                     dao.insert(it)
